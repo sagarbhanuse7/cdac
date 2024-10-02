@@ -1,0 +1,10 @@
+class String4{
+	public static void main(String[]argv){
+		String str = "SaAar BhanUse@#$09650 is LearnIng%&*$#8473533";
+		for(int i=0;i<str.length();i++){
+			if(!((str.charAt(i)>='A'&& str.charAt(i)<='Z')||(str.charAt(i)>='a'&& str.charAt(i)<='z')||(str.charAt(i)>='0'&& str.charAt(i)<='9'))){
+				System.out.print(str.charAt(i));
+			}
+		}
+	}
+}
