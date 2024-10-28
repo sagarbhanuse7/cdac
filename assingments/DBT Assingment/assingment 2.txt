@@ -1,0 +1,14 @@
+ 1) Which field of the Customers table is the primary key? 
+ans - Cnum (customer num) is the primary key of the customer table .
+
+2) What is the 4th column of the Customers table? 
+ans- Rating column is the 4th column of customers table.
+
+3) What is another word for row?  For column? 
+ans- row = record.
+     column = field.
+
+4) Why isn’t it possible to see the first five rows of a table?
+ans - yess possible to see first five rows
+      select * from table_name limit 5;
+_

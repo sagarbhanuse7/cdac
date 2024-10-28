@@ -1,0 +1,97 @@
+ 1) Write a query that lists each order number followed by the name of the customer 
+who made the order. 
+
+-->select cname,onum from customer,orders
+    -> where customer.snum = orders.snum;
++----------+------+
+| cname    | onum |
++----------+------+
+| Cisneros | 3001 |
+| Clemens  | 3003 |
+| Hoffman  | 3003 |
+| Pereira  | 3002 |
+| Grass    | 3005 |
+| Liu      | 3005 |
+| Cisneros | 3006 |
+| Giovanni | 3009 |
+| Grass    | 3007 |
+| Liu      | 3007 |
+| Clemens  | 3008 |
+| Hoffman  | 3008 |
+| Grass    | 3010 |
+| Liu      | 3010 |
+| Clemens  | 3011 |
+| Hoffman  | 3011 |
++----------+------+
+16 rows in set (0.01 sec)
+
+2) Write a query that gives the names of both the salesperson and the customer for 
+each order along with the order number. 
+
+-->select o.onum,c.cname,s.sname
+    -> from orders o
+    -> join customer c  on c.snum = o.snum
+    -> join salespeople s on s.snum = o.snum;
++------+----------+---------+
+| onum | cname    | sname   |
++------+----------+---------+
+| 3001 | Cisneros | Rifkin  |
+| 3003 | Clemens  | Peel    |
+| 3003 | Hoffman  | Peel    |
+| 3002 | Pereira  | Motika  |
+| 3005 | Grass    | Serres  |
+| 3005 | Liu      | Serres  |
+| 3006 | Cisneros | Rifkin  |
+| 3009 | Giovanni | Axelrod |
+| 3007 | Grass    | Serres  |
+| 3007 | Liu      | Serres  |
+| 3008 | Clemens  | Peel    |
+| 3008 | Hoffman  | Peel    |
+| 3010 | Grass    | Serres  |
+| 3010 | Liu      | Serres  |
+| 3011 | Clemens  | Peel    |
+| 3011 | Hoffman  | Peel    |
++------+----------+---------+
+16 rows in set (0.00 sec)
+
+
+3) Write a query that produces all customers serviced by salespeople with a 
+commission above 12%. Output the customer’s name, the salesperson’s name, 
+and the salesperson’s rate of commission. 
+
+-->select sname,cname,comm
+    -> from salespeople
+    -> join customer
+    -> on salespeople.snum = customer.snum
+    -> where comm > 0.12;
++--------+----------+------+
+| sname  | cname    | comm |
++--------+----------+------+
+| Serres | Liu      | 0.13 |
+| Serres | Grass    | 0.13 |
+| Rifkin | Cisneros | 0.15 |
++--------+----------+------+
+3 rows in set (0.00 sec)
+
+
+4) Write a query that calculates the amount of the salesperson’s commission on each 
+order by a customer with a rating above 100. 
+
+-->select amt,comm from salespeople
+    -> inner join orders using (snum)
+    -> inner join customer using (snum)
+    -> where ratings > 100;
++---------+------+
+| amt     | comm |
++---------+------+
+|   18.69 | 0.15 |
+| 5160.45 | 0.13 |
+| 5160.45 | 0.13 |
+| 1098.16 | 0.15 |
+| 1713.23 | 0.10 |
+|   75.75 | 0.13 |
+|   75.75 | 0.13 |
+| 1309.95 | 0.13 |
+| 1309.95 | 0.13 |
++---------+------+
+9 rows in set (0.02 sec)

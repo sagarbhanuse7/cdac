@@ -1,0 +1,14 @@
+ 1) Write a query that produces all pairs of salespeople who are living in the same 
+city.  Exclude combinations of salespeople with themselves as well as duplicate 
+rows with the order reversed. 
+
+-->select cname,city from customer
+--> where ratings = (select ratings from customer where cname = 'hoffman');
++---------+--------+
+| cname   | city   |
++---------+--------+
+| Hoffman | London |
+| Clemens | London |
+| Pereira | Rome   |
++---------+--------+
+3 rows in set (0.00 sec)
